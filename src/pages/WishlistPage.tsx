@@ -166,7 +166,7 @@ export const WishlistPage: React.FC = () => {
   if (loading) {
     return (
       <div className="min-h-[calc(100vh-80px)] flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-[#EFBB76]" />
+        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
       </div>
     );
   }
@@ -177,13 +177,6 @@ export const WishlistPage: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       className="max-w-7xl mx-auto px-6 py-12"
     >
-      <button 
-        onClick={() => navigate(-1)}
-        className="flex items-center gap-2 text-black/40 hover:text-[#EFBB76] transition-colors group mb-8"
-      >
-        <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" /> Back
-      </button>
-
       <header className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
         <div>
           <h1 className="text-4xl font-serif font-bold text-black mb-2">Your Collections</h1>
@@ -224,11 +217,11 @@ export const WishlistPage: React.FC = () => {
                   onClick={() => setSelectedFolderId(folder.id)}
                   className={`flex-1 flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold transition-all ${
                     selectedFolderId === folder.id 
-                    ? 'bg-[#EFBB76]/10 text-[#EFBB76]' 
+                    ? 'bg-blue-600/10 text-blue-600' 
                     : 'hover:bg-black/5 text-black/60'
                   }`}
                 >
-                  <FolderIcon className={`w-4 h-4 ${selectedFolderId === folder.id ? 'text-[#EFBB76]' : 'text-black/20'}`} />
+                  <FolderIcon className={`w-4 h-4 ${selectedFolderId === folder.id ? 'text-blue-600' : 'text-black/20'}`} />
                   {folder.name}
                   <span className="ml-auto text-[10px] opacity-40">
                     {savedDesigns.filter(d => d.folderId === folder.id).length}
@@ -261,7 +254,7 @@ export const WishlistPage: React.FC = () => {
                 {currentFolderDesigns.map((design) => (
                   <div 
                     key={design.id} 
-                    className={`group bg-white border border-black/10 rounded-[2rem] overflow-hidden hover:border-[#EFBB76] transition-all ${viewMode === 'list' ? 'flex items-center p-4 gap-6' : ''}`}
+                    className={`group bg-white border border-black/10 rounded-[2rem] overflow-hidden hover:border-blue-600 transition-all ${viewMode === 'list' ? 'flex items-center p-4 gap-6' : ''}`}
                   >
                     <div className={`relative overflow-hidden ${viewMode === 'list' ? 'w-24 h-24 rounded-xl shrink-0' : 'aspect-square'}`}>
                       <img 
@@ -305,7 +298,7 @@ export const WishlistPage: React.FC = () => {
 
                       <button 
                         onClick={() => navigate(`/design-detail/${design.id}`)}
-                        className="w-full py-3 bg-black/5 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[#EFBB76] hover:text-black transition-all flex items-center justify-center gap-2"
+                        className="w-full py-3 bg-black/5 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center gap-2"
                       >
                         View Details <ArrowRight className="w-3 h-3" />
                       </button>
@@ -328,7 +321,7 @@ export const WishlistPage: React.FC = () => {
                 </div>
                 <button 
                   onClick={() => navigate('/design')}
-                  className="px-8 py-3 bg-[#EFBB76] text-black rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[#DBA762] transition-all"
+                  className="px-8 py-3 bg-blue-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-blue-700 transition-all"
                 >
                   Start Designing
                 </button>
@@ -369,13 +362,13 @@ export const WishlistPage: React.FC = () => {
                     type="text" 
                     value={newFolderName}
                     onChange={(e) => setNewFolderName(e.target.value)}
-                    className="w-full bg-black/5 border border-transparent rounded-2xl px-6 py-4 focus:outline-none focus:border-[#EFBB76]/50 transition-all text-sm"
+                    className="w-full bg-black/5 border border-transparent rounded-2xl px-6 py-4 focus:outline-none focus:border-blue-600/50 transition-all text-sm"
                     placeholder="e.g., Living Room Project"
                   />
                 </div>
                 <button 
                   onClick={createFolder}
-                  className="w-full py-4 bg-[#EFBB76] text-black font-black text-[10px] uppercase tracking-widest rounded-xl hover:bg-[#DBA762] transition-all shadow-lg"
+                  className="w-full py-4 bg-blue-600 text-white font-black text-[10px] uppercase tracking-widest rounded-xl hover:bg-blue-700 transition-all shadow-lg"
                 >
                   Create Collection
                 </button>
