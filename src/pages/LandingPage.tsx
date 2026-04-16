@@ -1,11 +1,28 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ArrowRight, Sparkles, Palette, Ruler, Layers, ShieldCheck, Globe, Zap, Mail, ExternalLink, Copy, X, Factory, Box, Package, Sofa, Lamp, RectangleHorizontal } from 'lucide-react';
+import { ArrowRight, Sparkles, Palette, Ruler, Layers, ShieldCheck, Globe, Zap, Mail, ExternalLink, Copy, X, Factory, Box, Package, Sofa, Lamp, RectangleHorizontal, Grid3X3 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { storage } from '../lib/storage';
 import { useFirebase } from '../components/FirebaseProvider';
 import { auth, googleProvider, signInWithPopup } from '../firebase';
 import { RugConfig } from '../types';
+
+const RugIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <path d="M4 4h16v16H4z" />
+    <path d="M4 4V2" />
+    <path d="M8 4V2" />
+    <path d="M12 4V2" />
+    <path d="M16 4V2" />
+    <path d="M20 4V2" />
+    <path d="M4 20v2" />
+    <path d="M8 20v2" />
+    <path d="M12 20v2" />
+    <path d="M16 20v2" />
+    <path d="M20 20v2" />
+    <path d="M8 8h8v8H8z" />
+  </svg>
+);
 
 export const LandingPage: React.FC = () => {
   const navigate = useNavigate();
@@ -194,35 +211,42 @@ export const LandingPage: React.FC = () => {
                 suffix: "vision",
                 desc: "AI-powered rug design and production system.", 
                 status: "Active", 
-                icon: RectangleHorizontal 
+                icon: RugIcon,
+                path: "/design"
               },
               { 
                 title: "Furniture Vision", 
                 main: "FURNI",
-                suffix: "ture vision",
+                suffix: "vision",
                 desc: "Custom furniture design and structural engineering.", 
                 status: "Coming Soon", 
-                icon: Sofa 
+                icon: Sofa,
+                path: "/design"
               },
               { 
                 title: "Lighting Vision", 
                 main: "LIGHT",
-                suffix: "ing vision",
+                suffix: "vision",
                 desc: "Intelligent lighting design and technical specs.", 
                 status: "Coming Soon", 
-                icon: Lamp 
+                icon: Lamp,
+                path: "/design"
               }
             ].map((module, i) => (
-              <div key={i} className={`p-10 rounded-[40px] border ${module.status === 'Active' ? 'border-blue-200 bg-[#F0F7FF]' : 'border-black/5 bg-black/[0.02] opacity-60'} transition-all`}>
-                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-8 ${module.status === 'Active' ? 'bg-blue-600 text-white' : 'bg-black/10 text-black/40'}`}>
-                  <module.icon className="w-6 h-6" />
+              <div 
+                key={i} 
+                onClick={() => navigate(module.path)}
+                className={`p-10 rounded-[40px] border cursor-pointer group border-blue-200 bg-[#F0F7FF] transition-all hover:scale-[1.02] hover:shadow-xl`}
+              >
+                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-8 bg-blue-600 text-white`}>
+                  <module.icon className="w-6 h-6 group-hover:scale-110 transition-transform" />
                 </div>
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="font-bold tracking-tighter flex items-baseline gap-2">
                     <span className="text-4xl leading-none">{module.main}</span>
                     <span className="text-sm opacity-40">{module.suffix}</span>
                   </h3>
-                  <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full ${module.status === 'Active' ? 'bg-[#F0F7FF] text-blue-600' : 'bg-black/10 text-black/40'}`}>
+                  <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full bg-[#F0F7FF] text-blue-600`}>
                     {module.status}
                   </span>
                 </div>
