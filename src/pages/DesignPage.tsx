@@ -168,13 +168,6 @@ export const DesignPage: React.FC = () => {
       animate={{ opacity: 1, y: 0 }}
       className="max-w-4xl mx-auto px-6 py-12"
     >
-      <button 
-        onClick={() => navigate(-1)}
-        className="flex items-center gap-2 px-6 py-3 bg-white border-2 border-[#EFBB76] text-[#EFBB76] font-bold rounded-full hover:bg-[#EFBB76] hover:text-black transition-all group mb-8"
-      >
-        <ChevronLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" /> Back
-      </button>
-
       <header className="mb-12 text-center relative">
         <h1 className="text-5xl font-serif font-bold text-black mb-4 tracking-tight">
           {isRegenerateMode ? 'Refine Your Selection' : 'Customize Your Rug'}
@@ -285,7 +278,7 @@ export const DesignPage: React.FC = () => {
                                     <button
                                       key={pc}
                                       onClick={() => updateColor(index, pc)}
-                                      className={`w-full aspect-square rounded-lg border-2 transition-transform hover:scale-110 ${color === pc ? 'border-[#EFBB76]' : 'border-transparent'}`}
+                                      className={`w-full aspect-square rounded-lg border-2 transition-transform hover:scale-110 ${color === pc ? 'border-blue-600' : 'border-transparent'}`}
                                       style={{ backgroundColor: pc }}
                                     />
                                   ))}
@@ -341,7 +334,7 @@ export const DesignPage: React.FC = () => {
                     <select
                       value={config.materialTypes[index]}
                       onChange={(e) => updateMaterialType(index, e.target.value)}
-                      className="w-full bg-black text-white border-none rounded-2xl pl-4 pr-12 py-5 text-[11px] font-black uppercase tracking-widest focus:outline-none focus:ring-4 focus:ring-[#EFBB76]/20 transition-all appearance-none cursor-pointer overflow-hidden text-ellipsis"
+                      className="w-full bg-black text-white border-none rounded-2xl pl-4 pr-12 py-5 text-[11px] font-black uppercase tracking-widest focus:outline-none focus:ring-4 focus:ring-blue-600/20 transition-all appearance-none cursor-pointer overflow-hidden text-ellipsis"
                     >
                       <optgroup label="Standard" className="bg-white text-black">
                         {MATERIAL_TYPES.filter(m => m.tier === 'Standard').map(m => (
@@ -364,7 +357,7 @@ export const DesignPage: React.FC = () => {
                       </optgroup>
                     </select>
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                      <Plus className="w-4 h-4 text-[#EFBB76]" />
+                      <Plus className="w-4 h-4 text-blue-600" />
                     </div>
                   </div>
                 </div>
@@ -377,7 +370,7 @@ export const DesignPage: React.FC = () => {
         <section className={`bg-black/5 p-8 rounded-3xl border border-black/10 shadow-sm ${isRegenerateMode ? 'opacity-50 pointer-events-none' : ''}`}>
           <div className="flex items-center justify-between mb-6">
             <div className="space-y-1">
-              <label className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#EFBB76]">
+              <label className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-blue-600">
                 <Ruler className="w-4 h-4" /> 2. Select Size {isRegenerateMode && '(Locked)'}
               </label>
               <p className="text-[10px] text-black/40 font-medium">
@@ -387,13 +380,13 @@ export const DesignPage: React.FC = () => {
             <div className="flex bg-white rounded-lg p-1 border border-black/5 shadow-sm">
               <button
                 onClick={() => setUnit('ft')}
-                className={`px-3 py-1 text-[10px] font-bold rounded-md transition-all ${unit === 'ft' ? 'bg-[#EFBB76] text-black' : 'text-black/40 hover:text-black'}`}
+                className={`px-3 py-1 text-[10px] font-bold rounded-md transition-all ${unit === 'ft' ? 'bg-blue-600 text-white' : 'text-black/40 hover:text-black'}`}
               >
                 FT
               </button>
               <button
                 onClick={() => setUnit('m')}
-                className={`px-3 py-1 text-[10px] font-bold rounded-md transition-all ${unit === 'm' ? 'bg-[#EFBB76] text-black' : 'text-black/40 hover:text-black'}`}
+                className={`px-3 py-1 text-[10px] font-bold rounded-md transition-all ${unit === 'm' ? 'bg-blue-600 text-white' : 'text-black/40 hover:text-black'}`}
               >
                 M
               </button>
@@ -408,7 +401,7 @@ export const DesignPage: React.FC = () => {
                   onClick={() => setConfig({ ...config, width: s.w, length: s.l })}
                   className={`p-4 rounded-xl border text-center transition-all ${
                     config.width === s.w && config.length === s.l
-                    ? 'bg-[#EFBB76]/10 border-[#EFBB76] text-[#EFBB76]' 
+                    ? 'bg-blue-600/10 border-blue-600 text-blue-600' 
                     : 'bg-white border-black/5 hover:border-black/20'
                   }`}
                 >
@@ -428,7 +421,7 @@ export const DesignPage: React.FC = () => {
                     const val = parseFloat(e.target.value) || 0;
                     setConfig({ ...config, width: unit === 'ft' ? val : val / 0.3048 });
                   }}
-                  className="w-full bg-white border border-black/10 rounded-xl pl-20 pr-4 py-4 focus:outline-none focus:border-[#EFBB76]/50 transition-all font-bold text-black"
+                  className="w-full bg-white border border-black/10 rounded-xl pl-20 pr-4 py-4 focus:outline-none focus:border-blue-600/50 transition-all font-bold text-black"
                 />
               </div>
               <div className="relative">
@@ -441,7 +434,7 @@ export const DesignPage: React.FC = () => {
                     const val = parseFloat(e.target.value) || 0;
                     setConfig({ ...config, length: unit === 'ft' ? val : val / 0.3048 });
                   }}
-                  className="w-full bg-white border border-black/10 rounded-xl pl-20 pr-4 py-4 focus:outline-none focus:border-[#EFBB76]/50 transition-all font-bold text-black"
+                  className="w-full bg-white border border-black/10 rounded-xl pl-20 pr-4 py-4 focus:outline-none focus:border-blue-600/50 transition-all font-bold text-black"
                 />
               </div>
             </div>
@@ -452,7 +445,7 @@ export const DesignPage: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Construction */}
           <section className="bg-black/5 p-8 rounded-3xl border border-black/10 shadow-sm">
-            <label className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#EFBB76] mb-6">
+            <label className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-blue-600 mb-6">
               <Layers className="w-4 h-4" /> 3. Construction Type
             </label>
             <div className="space-y-2">
@@ -477,21 +470,21 @@ export const DesignPage: React.FC = () => {
                     onClick={() => setConfig({ ...config, construction: c.id })}
                     className={`w-full px-4 py-3 text-sm rounded-xl border flex justify-between items-center transition-all ${
                       config.construction === c.id 
-                      ? 'bg-[#EFBB76]/10 border-[#EFBB76] text-[#EFBB76]' 
+                      ? 'bg-blue-600/10 border-blue-600 text-blue-600' 
                       : 'bg-white border-black/5 hover:border-black/20'
                     } ${isDisabled ? 'opacity-50 grayscale cursor-not-allowed' : ''}`}
                   >
                     <div className="flex flex-col items-start">
                       <div className="flex items-center gap-2">
                         <span className="font-medium">{c.name.split(' — ')[0]}</span>
-                        {isDisabled && <Lock className="w-3 h-3 text-[#EFBB76]" />}
+                        {isDisabled && <Lock className="w-3 h-3 text-blue-600" />}
                       </div>
                       {knotSubtext && (
                         <span className="text-[10px] font-bold text-black/40 uppercase tracking-widest">
                           {knotSubtext}
                         </span>
                       )}
-                      {isDisabled && <span className="text-[8px] font-black text-[#EFBB76] uppercase tracking-tighter">Available for pro users only</span>}
+                      {isDisabled && <span className="text-[8px] font-black text-blue-600 uppercase tracking-tighter">Available for pro users only</span>}
                     </div>
                     <ArrowRight className={`w-4 h-4 ${config.construction === c.id ? 'opacity-100' : 'opacity-0'}`} />
                   </button>
@@ -502,7 +495,7 @@ export const DesignPage: React.FC = () => {
 
           {/* Pile & Finish */}
           <section className="bg-black/5 p-8 rounded-3xl border border-black/10 shadow-sm">
-            <label className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-[#EFBB76] mb-6">
+            <label className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-blue-600 mb-6">
               <Move className="w-4 h-4" /> 4. Texture & Finish
             </label>
             
@@ -519,7 +512,7 @@ export const DesignPage: React.FC = () => {
                         onClick={() => setConfig({ ...config, pileType: p.id })}
                         className={`flex-1 py-3 px-2 rounded-lg border transition-all flex flex-col items-center gap-1 ${
                           config.pileType === p.id 
-                          ? 'bg-[#EFBB76]/10 border-[#EFBB76] text-[#EFBB76]' 
+                          ? 'bg-blue-600/10 border-blue-600 text-blue-600' 
                           : 'bg-white border-black/5 hover:border-black/20'
                         }`}
                       >
@@ -542,7 +535,7 @@ export const DesignPage: React.FC = () => {
                         onClick={() => setConfig({ ...config, pileHeight: p.id })}
                         className={`py-3 px-2 rounded-lg border transition-all flex flex-col items-center gap-1 ${
                           config.pileHeight === p.id 
-                          ? 'bg-[#EFBB76]/10 border-[#EFBB76] text-[#EFBB76]' 
+                          ? 'bg-blue-600/10 border-blue-600 text-blue-600' 
                           : 'bg-white border-black/5 hover:border-black/20'
                         }`}
                       >
@@ -565,7 +558,7 @@ export const DesignPage: React.FC = () => {
                         onClick={() => toggleFinish(f.id)}
                         className={`py-3 px-2 rounded-lg border transition-all flex flex-col items-center gap-1 ${
                           config.surfaceFinishes.includes(f.id)
-                          ? 'bg-[#EFBB76]/10 border-[#EFBB76] text-[#EFBB76]' 
+                          ? 'bg-blue-600/10 border-blue-600 text-blue-600' 
                           : 'bg-white border-black/5 hover:border-black/20'
                         }`}
                       >
@@ -585,7 +578,7 @@ export const DesignPage: React.FC = () => {
           <button
             onClick={handleVisualize}
             disabled={!config.prompt}
-            className="btn-primary px-12 py-5 text-xl disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_30px_rgba(239,187,118,0.3)]"
+            className="btn-primary px-12 py-5 text-xl disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_30px_rgba(37,99,235,0.3)]"
           >
             {isRegenerateMode ? 'Regenerate Design' : 'Preview Your Rug'} 
             <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
