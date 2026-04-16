@@ -78,7 +78,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
               <Sparkles className="w-6 h-6 text-blue-600" />
             </div>
             <div>
-              <h1 className="text-lg font-bold tracking-tighter leading-none uppercase text-black">RUGVISION.CA</h1>
+              <h1 className="text-lg font-bold tracking-tighter leading-none uppercase text-black">RUGVISION</h1>
               <span className="text-[10px] font-bold text-blue-600 tracking-[0.2em] uppercase">AI Design Infrastructure</span>
             </div>
           </Link>
@@ -139,7 +139,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
               <Sparkles className="w-6 h-6 text-blue-600" />
             </div>
             <div>
-              <h2 className="text-lg font-bold tracking-tighter leading-none uppercase text-black">RUGVISION.CA</h2>
+              <h2 className="text-lg font-bold tracking-tighter leading-none uppercase text-black">RUGVISION</h2>
               <span className="text-[10px] font-bold text-blue-600 tracking-[0.2em] uppercase">AI Design Infrastructure</span>
             </div>
           </div>
@@ -159,7 +159,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
           <div className="flex flex-col items-center md:items-end gap-2">
             <div className="text-[10px] font-bold text-black/20 uppercase tracking-widest">
-              © 2026 RUGVISION.CA
+              © 2026 RUGVISION
             </div>
             {!user && (
               <button 
@@ -173,28 +173,6 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         </div>
       </footer>
 
-      {/* Navigation Buttons */}
-      <div className="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-white via-white/90 to-transparent pointer-events-none z-30">
-        <div className="max-w-7xl mx-auto flex justify-between pointer-events-auto">
-          {prevPage ? (
-            <button 
-              onClick={() => navigate(prevPage)}
-              className="btn-secondary px-6 py-3 text-xs"
-            >
-              <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Back
-            </button>
-          ) : <div />}
-
-          {nextPage ? (
-            <button 
-              onClick={() => navigate(nextPage)}
-              className="btn-primary px-6 py-3 text-xs"
-            >
-              Next <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
-          ) : <div />}
-        </div>
-      </div>
     </div>
   );
 };
